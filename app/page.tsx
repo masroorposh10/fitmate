@@ -43,7 +43,7 @@ export default function Home() {
                     Start Your Journey <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="border-white text-black hover:bg-white/10">
                   <Link href="/login">Sign In</Link>
                 </Button>
               </div>
