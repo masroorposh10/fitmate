@@ -455,24 +455,50 @@ export default function Dashboard() {
                 </div>
 
                 {/* Chart Visualization */}
-                <div className="h-[200px] w-full bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center border border-gray-200 dark:border-gray-700">
-                <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={progress?.weight || []}>
-              <XAxis dataKey="date" stroke="#94a3b8" />
-              <YAxis stroke="#94a3b8" />
-              <Tooltip contentStyle={{ backgroundColor: "#1e293b", borderColor: "#94a3b8" }} />
-              <Legend wrapperStyle={{ color: "#94a3b8" }} />
-              <Line
-              type="monotone"
-              dataKey="value"
-              stroke="#f97316"
-              strokeWidth={3}
-              dot={{ r: 5, fill: "#f97316" }}
-              name="Weight"
-              />
-            </LineChart>
-          </ResponsiveContainer>
-                </div>
+                <div className="h-[250px] w-full bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center border border-gray-200 dark:border-gray-700">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={[
+                          {
+                            name: "Stats",
+                            Streak: progress?.streak || 0,
+                            Workouts: progress?.workouts_completed || 0,
+                            Calories: progress?.calories_burned || 0,
+                          },
+                        ]}
+                        layout="vertical"
+                      >
+                        <XAxis type="number" stroke="#94a3b8" />
+                        <YAxis
+                          dataKey="name"
+                          type="category"
+                          stroke="#94a3b8"
+                        />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: "#1e293b",
+                            borderColor: "#94a3b8",
+                          }}
+                        />
+                        <Legend />
+                        <Bar
+                          dataKey="Streak"
+                          fill="#f97316"
+                          name="Workout Streak"
+                        />
+                        <Bar
+                          dataKey="Workouts"
+                          fill="#06b6d4"
+                          name="Workouts Completed"
+                        />
+                        <Bar
+                          dataKey="Calories"
+                          fill="#ef4444"
+                          name="Calories Burned"
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
               </div>
               </CardContent>
             </Card>
